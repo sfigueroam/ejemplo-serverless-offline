@@ -1,0 +1,17 @@
+postAutos:
+    name: tgr-postAutos
+    handler: postAutos.handler
+    timeout: 30
+    events:
+    - http:
+        path: autos
+        method: post
+  
+  getAutos:
+    name: tgr-getAutos
+    handler: getAutos.handler
+    timeout: 30
+    events:
+    - http:
+        path: autos
+        method: get

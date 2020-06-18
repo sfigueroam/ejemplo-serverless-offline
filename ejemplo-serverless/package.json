@@ -1,0 +1,19 @@
+{
+  "name": "back",
+  "version": "1.0.0",
+  "description": "",
+  "main": "postSolicitud.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "serverless --config serverless.debug.yml dynamodb install --port 8002",
+    "serverless-offline": "node $DEBUG node_modules/serverless/bin/serverless --config serverless.debug.yml --stage dev offline start --host 0.0.0.0 --httpPort 3000 --lambdaPort 3001"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "aws-sdk": "^2.677.0",
+    "serverless": "^1.70.1",
+    "serverless-dynamodb-local": "^0.2.39",
+    "serverless-offline": "^6.1.5"
+  }
+}

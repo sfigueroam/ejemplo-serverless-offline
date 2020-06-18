@@ -1,0 +1,38 @@
+service: api-recaudacion
+
+plugins:
+  - serverless-dynamodb-local
+  - serverless-offline  # should be last in list
+  
+custom:
+  endpoints:
+    dynamodb-url: 'http://localhost:8002'
+
+  tableNames:
+    autos: 'autos'
+
+  dynamodb:
+    start:
+      port: "8002"
+      migrate: true
+    stages:
+      - dev
+  
+provider:
+  name: aws
+  runtime: nodejs12.x
+  region: us-east-1
+  stage: ${opt:stage, 'v1'}
+  environment:
+    CONFIG_DYNAMODB_ENDPOINT: ${self:custom.endpoints.dynamodb-url}
+  
+package:
+  exclude:
+  - package-lock.json
+  - package.json  
+
+functions:
+  - ${file(resources/functions.yml)}
+        
+resources:
+  - ${file(resources/tabla-autos.yml)}

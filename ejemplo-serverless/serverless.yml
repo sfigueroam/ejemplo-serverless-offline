@@ -1,0 +1,15 @@
+service: api-recaudacion
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  region: us-east-1
+  stage: ${opt:stage, 'v1'}
+    
+package:
+  exclude:
+  - package-lock.json
+  - package.json  
+
+functions:
+  - ${file(resources/functions.yml)}
